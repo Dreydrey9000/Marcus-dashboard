@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a; 
+            color: #fff;
+            min-height: 100vh;
+        }
+        .header { 
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 20px;
+        }
+        .header h1 { 
+            font-size: 28px;
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 15px;
+        }
+        .nav {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 15px;
+        }
+        .nav-item {
+            padding: 10px 20px;
+            background: #222;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>◉ APEX</h1>
+        <p style="color: #888; margin-top: 5px;">Drey's Digital Twin</p>
+    </div>
+    
+    <div class="nav">
+        <div class="nav-item">Overview</div>
+        <div class="nav-item">Companies</div>
+        <div class="nav-item">ROI</div>
+        <div class="nav-item">Journal</div>
+    </div>
+    
+    <div class="card">
+        <h3 style="color: #888; font-size: 12px; text-transform: uppercase;">Currently Working On</h3>
+        <h2 style="margin-top: 10px;">Dashboard v1.0</h2>
+        <div style="margin-top: 15px; background: #0f0f0f; border-radius: 8px; height: 8px;">
+            <div style="width: 75%; height: 100%; background: linear-gradient(90deg, #00d4ff, #7b2cbf); border-radius: 8px;"></div>
+        </div>
+        <p style="color: #888; margin-top: 10px; font-size: 14px;">75% complete</p>
+    </div>
+    
+    <div class="card">
+        <h3 style="color: #888; font-size: 12px; text-transform: uppercase;">Companies</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 15px;">
+            <div style="background: #0f0f0f; padding: 15px; border-radius: 12px;">
+                <div style="font-size: 20px;">🎬</div>
+                <div style="margin-top: 5px; font-weight: 600;">Viral Edits</div>
+            </div>
+            <div style="background: #0f0f0f; padding: 15px; border-radius: 12px;">
+                <div style="font-size: 20px;">🏢</div>
+                <div style="margin-top: 5px; font-weight: 600;">G3AC</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
