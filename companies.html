@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Companies | APEX Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, sans-serif; background: #0a0a0a; color: #fff; padding: 20px; }
+        .back-btn { background: #1a1a1a; padding: 10px 20px; border-radius: 20px; display: inline-block; margin-bottom: 20px; cursor: pointer; }
+        h1 { font-size: 28px; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+        .company-card { background: #151515; padding: 20px; border-radius: 16px; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
+        .company-card:hover { border-color: #00d4ff; transform: translateY(-2px); }
+        .company-icon { font-size: 32px; margin-bottom: 10px; }
+        .company-name { font-weight: 700; font-size: 18px; margin-bottom: 5px; }
+        .company-desc { font-size: 12px; color: #888; margin-bottom: 10px; }
+        .company-stats { font-size: 11px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="back-btn" onclick="window.location.href='index.html'">← Back to Dashboard</div>
+    
+    <h1>🏢 All Companies</h1>
+    
+    <div class="grid">
+        <div class="company-card" onclick="window.location.href='viral-edits.html'">
+            <div class="company-icon">🎬</div>
+            <div class="company-name">Viral Edits</div>
+            <div class="company-desc">Video editing & social media growth</div>
+            <div class="company-stats">3 tasks | $200/mo budget | $45 spent</div>
+        </div>
+
+        <div class="company-card" onclick="alert('G3AC details coming soon')">
+            <div class="company-icon">🏢</div>
+            <div class="company-name">G3AC</div>
+            <div class="company-desc">Business operations & consulting</div>
+            <div class="company-stats">1 critical task | $300/mo budget | $120 spent</div>
+        </div>
+
+        <div class="company-card" onclick="alert('Frictionless details coming soon')">
+            <div class="company-icon">👥</div>
+            <div class="company-name">Frictionless</div>
+            <div class="company-desc">Startup & product development</div>
+            <div class="company-stats">Setting up | $150/mo budget | $0 spent</div>
+        </div>
+
+        <div class="company-card" onclick="alert('Personal Brand details coming soon')">
+            <div class="company-icon">📱</div>
+            <div class="company-name">Personal Brand</div>
+            <div class="company-desc">Content, social media, audience growth</div>
+            <div class="company-stats">2 scheduled | $100/mo budget | $20 spent</div>
+        </div>
+
+        <div class="company-card" onclick="alert('Dating Life details coming soon')">
+            <div class="company-icon">💘</div>
+            <div class="company-name">Dating Life</div>
+            <div class="company-desc">Profile optimization, messaging, automation</div>
+            <div class="company-stats">1 pending | $50/mo budget | $0 spent</div>
+        </div>
+
+        <div class="company-card" onclick="alert('AI Hedge Fund details coming soon')">
+            <div class="company-icon">📈</div>
+            <div class="company-name">AI Hedge Fund</div>
+            <div class="company-desc">18 investor agents for trading signals</div>
+            <div class="company-stats">⏳ Needs Groq API key | $100/mo budget</div>
+        </div>
+
+        <div class="company-card" onclick="alert('Business Holdings details coming soon')">
+            <div class="company-icon">💼</div>
+            <div class="company-name">Business Holdings</div>
+            <div class="company-desc">Umbrella entity for all businesses</div>
+            <div class="company-stats">Umbrella | $200/mo budget | $15 spent</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; padding: 20px; background: #151515; border-radius: 12px;">
+        <div style="font-size: 14px; color: #888;">💡 Tip: Click any company to see detailed tasks, metrics, and agents working on it.</div>
+        <div style="font-size: 12px; color: #666; margin-top: 5px;">(Viral Edits is ready - others coming soon)</div>
+    </div>
+</body>
+</html>

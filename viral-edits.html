@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viral Edits | Company Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, sans-serif; background: #0a0a0a; color: #fff; padding: 20px; }
+        .header { margin-bottom: 20px; }
+        .back-btn { background: #1a1a1a; padding: 10px 20px; border-radius: 20px; display: inline-block; margin-bottom: 15px; cursor: pointer; }
+        h1 { font-size: 28px; margin-bottom: 10px; }
+        .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+        .stat-box { background: #151515; padding: 16px; border-radius: 12px; }
+        .stat-label { font-size: 11px; color: #888; margin-bottom: 5px; }
+        .stat-value { font-size: 24px; font-weight: 800; }
+        .section { margin-bottom: 25px; }
+        .section-title { font-size: 16px; color: #00d4ff; margin-bottom: 12px; }
+        .task-item { background: #151515; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 3px solid #00d4ff; }
+        .task-title { font-weight: 700; margin-bottom: 5px; }
+        .task-desc { font-size: 12px; color: #888; }
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 10px; margin-top: 5px; }
+        .badge-high { background: #ff6b6b22; color: #ff6b6b; }
+        .badge-medium { background: #ffe66d22; color: #ffe66d; }
+        .badge-done { background: #00ff8822; color: #00ff88; }
+    </style>
+</head>
+<body>
+    <div class="back-btn" onclick="window.location.href='index.html'">← Back to Dashboard</div>
+    
+    <div class="header">
+        <h1>🎬 Viral Edits</h1>
+        <p style="color: #888;">Video editing & social media growth</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-box">
+            <div class="stat-label">Monthly Budget</div>
+            <div class="stat-value">$200</div>
+            <div style="font-size: 11px; color: #888; margin-top: 5px;">$45 spent (22%)</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Active Tasks</div>
+            <div class="stat-value">3</div>
+            <div style="font-size: 11px; color: #ffe66d;">1 high priority</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Revenue This Month</div>
+            <div class="stat-value">$0</div>
+            <div style="font-size: 11px; color: #888;">Potential: $14K/mo</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Agents Assigned</div>
+            <div class="stat-value">2</div>
+            <div style="font-size: 11px; color: #888;">Content + Growth</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🎯 Active Tasks</div>
+        
+        <div class="task-item" style="border-left-color: #ff6b6b;">
+            <div class="task-title">Scale to 50 clients/day</div>
+            <div class="task-desc">Build automated client acquisition pipeline</div>
+            <span class="badge badge-high">HIGH PRIORITY</span>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Optimize editing workflow</div>
+            <div class="task-desc">Reduce turnaround time from 48h to 24h</div>
+            <span class="badge badge-medium">IN PROGRESS</span>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Set up testimonial collection</div>
+            <div class="task-desc">Automate review requests after delivery</div>
+            <span class="badge badge-medium">PLANNED</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📊 Key Metrics</div>
+        
+        <div class="task-item">
+            <div class="task-title">Current Clients</div>
+            <div class="task-desc">3 active / 10 target by end of month</div>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Average Order Value</div>
+            <div class="task-desc">$150/video → Target: $200/video</div>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Client Retention</div>
+            <div class="task-desc">67% repeat rate → Target: 80%</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🤖 Agents Working</div>
+        
+        <div class="task-item">
+            <div class="task-title">Content Creation Agent</div>
+            <div class="task-desc">Automates video assembly, effects, exports</div>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Growth Agent</div>
+            <div class="task-desc">Manages client outreach, follow-ups, testimonials</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">💰 Revenue Opportunities</div>
+        
+        <div class="task-item" style="border-left-color: #00ff88;">
+            <div class="task-title">Upsell: Premium packages</div>
+            <div class="task-desc">Offer $300/video with same-day turnaround → $6K/mo potential</div>
+            <span class="badge badge-done">READY TO LAUNCH</span>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Monthly retainers</div>
+            <div class="task-desc">10 videos/mo for $1,200 (save $300) → $12K/mo potential</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📁 Recent Activity</div>
+        
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <div style="font-size: 10px; color: #666;">Today, 11:20 AM</div>
+            <div style="font-size: 13px;">Delivered 2 videos to @clientname</div>
+        </div>
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <div style="font-size: 10px; color: #666;">Yesterday, 3:45 PM</div>
+            <div style="font-size: 13px;">Received payment: $300</div>
+        </div>
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px;">
+            <div style="font-size: 10px; color: #666;">March 9, 2:15 PM</div>
+            <div style="font-size: 13px;">New client onboarded: @newclient</div>
+        </div>
+    </div>
+</body>
+</html>
