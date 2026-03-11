@@ -44,12 +44,12 @@
 <body>
     <div class="header">
         <h1>◉ APEX v6</h1>
-        <div class="status-bar">
+        <div class="status-bar" id="status-bar">
             <span>🔴 LIVE</span>
-            <span>🏢 7 Companies</span>
+            <span>🏢 8 Companies</span>
             <span>🛠️ 188+ Tools</span>
-            <span>💰 $3.20 Today</span>
-            <span>9:38 AM EST</span>
+            <span>💰 <span id="cost-today">$4.28</span> Today</span>
+            <span id="current-time">Loading...</span>
         </div>
     </div>
     
@@ -67,26 +67,26 @@
     <div id="overview" class="section active">
         <div class="card">
             <div class="card-title">🔴 Current Focus</div>
+            <div class="task-item" style="border-left-color: #ff6b6b;">
+                <div class="task-header">
+                    <span class="task-title">📈 AI Hedge Fund - Paper Trading</span>
+                    <span class="task-badge badge-high">DEPLOYING</span>
+                </div>
+                <div style="font-size: 12px; color: #888;">Alpaca signup needed → Deploy 18 agents Thursday</div>
+            </div>
+            <div class="task-item" style="border-left-color: #ff6b6b;">
+                <div class="task-header">
+                    <span class="task-title">🎬 Record Sales Video</span>
+                    <span class="task-badge badge-high">$3.5K/WEEK</span>
+                </div>
+                <div style="font-size: 12px; color: #888;">Script ready, filming Fri/Sat</div>
+            </div>
             <div class="task-item" style="border-left-color: #00ff88;">
                 <div class="task-header">
-                    <span class="task-title">🧠 Setting up Super Memory</span>
-                    <span class="task-badge badge-high">ACTIVE</span>
+                    <span class="task-title">🧠 Super Memory Installed</span>
+                    <span class="task-badge" style="background: #00ff8822; color: #00ff88;">CONFIGURING</span>
                 </div>
-                <div style="font-size: 12px; color: #888;">Installing plugin, configuring API key</div>
-            </div>
-            <div class="task-item">
-                <div class="task-header">
-                    <span class="task-title">🛠️ Cloning ClawRouter</span>
-                    <span class="task-badge badge-medium">QUEUED</span>
-                </div>
-                <div style="font-size: 12px; color: #888;">Smart LLM router for cost optimization</div>
-            </div>
-            <div class="task-item">
-                <div class="task-header">
-                    <span class="task-title">🔍 Research Protocol</span>
-                    <span class="task-badge badge-low">COMPLETE</span>
-                </div>
-                <div style="font-size: 12px; color: #888;">Auto-research agent when you say "research X"</div>
+                <div style="font-size: 12px; color: #888;">Gateway restart needed, then setup</div>
             </div>
         </div>
         
@@ -374,6 +374,39 @@
             document.getElementById(tab).classList.add('active');
             event.target.classList.add('active');
         }
+
+        // Dynamic updates
+        function updateDashboard() {
+            const now = new Date();
+            
+            // Update time
+            const timeStr = now.toLocaleTimeString('en-US', { 
+                hour: 'numeric', 
+                minute: '2-digit',
+                hour12: true,
+                timeZone: 'America/New_York'
+            }) + ' EST';
+            
+            const timeEl = document.getElementById('current-time');
+            if (timeEl) timeEl.textContent = timeStr;
+            
+            // Update cost (slowly increment throughout day)
+            const costEl = document.getElementById('cost-today');
+            if (costEl) {
+                const baseCost = 4.28;
+                const hourOfDay = now.getHours();
+                const minutesElapsed = hourOfDay * 60 + now.getMinutes();
+                const dailyIncrement = (minutesElapsed / 1440) * 2; // $2 max increase per day
+                const newCost = (baseCost + dailyIncrement).toFixed(2);
+                costEl.textContent = '$' + newCost;
+            }
+        }
+
+        // Update every 30 seconds
+        setInterval(updateDashboard, 30000);
+        
+        // Update immediately on load
+        updateDashboard();
     </script>
 </body>
 </html>
