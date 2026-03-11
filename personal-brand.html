@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Brand | Company Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, sans-serif; background: #0a0a0a; color: #fff; padding: 20px; }
+        .header { margin-bottom: 20px; }
+        .back-btn { background: #1a1a1a; padding: 10px 20px; border-radius: 20px; display: inline-block; margin-bottom: 15px; cursor: pointer; }
+        h1 { font-size: 28px; margin-bottom: 10px; }
+        .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+        .stat-box { background: #151515; padding: 16px; border-radius: 12px; }
+        .stat-label { font-size: 11px; color: #888; margin-bottom: 5px; }
+        .stat-value { font-size: 24px; font-weight: 800; }
+        .section { margin-bottom: 25px; }
+        .section-title { font-size: 16px; color: #00d4ff; margin-bottom: 12px; }
+        .task-item { background: #151515; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 3px solid #00d4ff; }
+        .task-title { font-weight: 700; margin-bottom: 5px; }
+        .task-desc { font-size: 12px; color: #888; }
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 10px; margin-top: 5px; }
+        .badge-medium { background: #ffe66d22; color: #ffe66d; }
+        .badge-done { background: #00ff8822; color: #00ff88; }
+    </style>
+</head>
+<body>
+    <div class="back-btn" onclick="window.location.href='companies.html'">← Back to Companies</div>
+    
+    <div class="header">
+        <h1>📱 Personal Brand</h1>
+        <p style="color: #888;">Content, social media, audience growth</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-box">
+            <div class="stat-label">Monthly Budget</div>
+            <div class="stat-value">$100</div>
+            <div style="font-size: 11px; color: #888; margin-top: 5px;">$20 spent (20%)</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Scheduled Posts</div>
+            <div class="stat-value">2</div>
+            <div style="font-size: 11px; color: #00ff88;">This week</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Total Followers</div>
+            <div class="stat-value">847</div>
+            <div style="font-size: 11px; color: #888;">+23 this week</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Engagement Rate</div>
+            <div class="stat-value">4.2%</div>
+            <div style="font-size: 11px; color: #00ff88;">↑ 0.8%</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🎯 This Week's Content</div>
+        
+        <div class="task-item">
+            <div class="task-title">Thursday: Business mindset post</div>
+            <div class="task-desc">"Why I stopped trading time for money" - LinkedIn + X</div>
+            <span class="badge badge-medium">SCHEDULED</span>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Saturday: Behind-the-scenes</div>
+            <div class="task-desc">Day in the life running 7 businesses - Instagram Stories</div>
+            <span class="badge badge-medium">SCHEDULED</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📊 Growth Strategy</div>
+        
+        <div class="task-item" style="border-left-color: #00ff88;">
+            <div class="task-title">LinkedIn Authority Building</div>
+            <div class="task-desc">3 posts/week on entrepreneurship, business, AI automation</div>
+            <span class="badge badge-done">ACTIVE</span>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">X (Twitter) Thought Leadership</div>
+            <div class="task-desc">Daily insights on AI, business, personal growth</div>
+            <span class="badge badge-done">ACTIVE</span>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Instagram Personal Life</div>
+            <div class="task-desc">Stories 2-3x/week showing real entrepreneur journey</div>
+            <span class="badge badge-medium">PLANNED</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">💡 Content Pillars</div>
+        
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <div style="font-weight: 600; margin-bottom: 3px;">1. Business & Entrepreneurship</div>
+            <div style="font-size: 11px; color: #888;">Lessons from running 7 businesses, failures, wins</div>
+        </div>
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <div style="font-weight: 600; margin-bottom: 3px;">2. AI & Automation</div>
+            <div style="font-size: 11px; color: #888;">How APEX runs operations, future of work, tech trends</div>
+        </div>
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <div style="font-weight: 600; margin-bottom: 3px;">3. Personal Development</div>
+            <div style="font-size: 11px; color: #888;">Mindset, habits, decision-making, growth</div>
+        </div>
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px;">
+            <div style="font-weight: 600; margin-bottom: 3px;">4. Lifestyle</div>
+            <div style="font-size: 11px; color: #888;">Travel, fitness, relationships, building wealth</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🤖 Content Agent</div>
+        
+        <div class="task-item">
+            <div class="task-title">Personal Brand Agent</div>
+            <div class="task-desc">Drafts posts, schedules content, analyzes engagement, suggests topics</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📈 Growth Goals (90 days)</div>
+        
+        <div class="task-item">
+            <div class="task-title">LinkedIn: 1,000 → 5,000 followers</div>
+            <div class="task-desc">3 high-value posts/week + daily engagement</div>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">X (Twitter): 500 → 2,000 followers</div>
+            <div class="task-desc">Daily insights + thread Sundays</div>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Instagram: 200 → 1,000 followers</div>
+            <div class="task-desc">Stories 3x/week + Reels 1x/week</div>
+        </div>
+    </div>
+</body>
+</html>

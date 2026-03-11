@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Hedge Fund | Company Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, sans-serif; background: #0a0a0a; color: #fff; padding: 20px; }
+        .header { margin-bottom: 20px; }
+        .back-btn { background: #1a1a1a; padding: 10px 20px; border-radius: 20px; display: inline-block; margin-bottom: 15px; cursor: pointer; }
+        h1 { font-size: 28px; margin-bottom: 10px; }
+        .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+        .stat-box { background: #151515; padding: 16px; border-radius: 12px; }
+        .stat-label { font-size: 11px; color: #888; margin-bottom: 5px; }
+        .stat-value { font-size: 24px; font-weight: 800; }
+        .section { margin-bottom: 25px; }
+        .section-title { font-size: 16px; color: #00d4ff; margin-bottom: 12px; }
+        .task-item { background: #151515; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 3px solid #00d4ff; }
+        .task-title { font-weight: 700; margin-bottom: 5px; }
+        .task-desc { font-size: 12px; color: #888; }
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 10px; margin-top: 5px; }
+        .badge-high { background: #ff6b6b22; color: #ff6b6b; }
+        .badge-pending { background: #ffe66d22; color: #ffe66d; }
+        .agent-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .agent-card { background: #0f0f0f; padding: 12px; border-radius: 8px; }
+        .agent-name { font-weight: 600; font-size: 13px; margin-bottom: 3px; }
+        .agent-style { font-size: 10px; color: #888; }
+    </style>
+</head>
+<body>
+    <div class="back-btn" onclick="window.location.href='companies.html'">← Back to Companies</div>
+    
+    <div class="header">
+        <h1>📈 AI Hedge Fund</h1>
+        <p style="color: #888;">18 legendary investor agents for trading signals</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-box">
+            <div class="stat-label">Monthly Budget</div>
+            <div class="stat-value">$100</div>
+            <div style="font-size: 11px; color: #888; margin-top: 5px;">$0 spent</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Status</div>
+            <div class="stat-value" style="font-size: 18px;">⏳ Pending</div>
+            <div style="font-size: 11px; color: #ffe66d;">Needs Groq API key</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Investor Agents</div>
+            <div class="stat-value">18</div>
+            <div style="font-size: 11px; color: #888;">Ready to activate</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Trading Mode</div>
+            <div class="stat-value" style="font-size: 16px;">Paper</div>
+            <div style="font-size: 11px; color: #888;">Test mode (no real $)</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🎯 Setup Tasks</div>
+        
+        <div class="task-item" style="border-left-color: #ff6b6b;">
+            <div class="task-title">Get Groq API Key</div>
+            <div class="task-desc">Go to console.groq.com → Sign up free → Create key → Text APEX</div>
+            <span class="badge badge-high">BLOCKING</span>
+        </div>
+
+        <div class="task-item" style="border-left-color: #ffe66d;">
+            <div class="task-title">Configure paper trading account</div>
+            <div class="task-desc">Set up test account to validate signals before real money</div>
+            <span class="badge badge-pending">READY AFTER API KEY</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🤖 18 Investor Agents (Click any to see strategy)</div>
+        
+        <div class="agent-grid">
+            <div class="agent-card">
+                <div class="agent-name">Warren Buffett</div>
+                <div class="agent-style">Value | Long-term</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Charlie Munger</div>
+                <div class="agent-style">Mental models | Rational</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Cathie Wood</div>
+                <div class="agent-style">Disruptive | Growth</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Michael Burry</div>
+                <div class="agent-style">Contrarian | Deep value</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Ray Dalio</div>
+                <div class="agent-style">Macro | All Weather</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Peter Lynch</div>
+                <div class="agent-style">GARP | Consumer</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">George Soros</div>
+                <div class="agent-style">Reflexivity | Macro</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Bill Ackman</div>
+                <div class="agent-style">Activist | Concentrated</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Carl Icahn</div>
+                <div class="agent-style">Activist | Governance</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Stanley Druckenmiller</div>
+                <div class="agent-style">Macro | Soros protégé</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">John Templeton</div>
+                <div class="agent-style">Global value</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Benjamin Graham</div>
+                <div class="agent-style">Value father | Safety</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">David Tepper</div>
+                <div class="agent-style">Distressed | High conviction</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Paul Tudor Jones</div>
+                <div class="agent-style">Macro | Technical</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Ken Griffin</div>
+                <div class="agent-style">Quant | Multi-strategy</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">James Simons</div>
+                <div class="agent-style">Quant | Mathematical</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Seth Klarman</div>
+                <div class="agent-style">Value | Risk mgmt</div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-name">Howard Marks</div>
+                <div class="agent-style">Credit | Risk aware</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">💰 Expected Performance (Paper Trading)</div>
+        
+        <div class="task-item" style="border-left-color: #00ff88;">
+            <div class="task-title">Consensus Signals</div>
+            <div class="task-desc">When 5+ agents agree on a trade → High confidence signal</div>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Diversification</div>
+            <div class="task-desc">18 different strategies = balanced portfolio across styles</div>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Real-time Analysis</div>
+            <div class="task-desc">Agents analyze market data 24/7, signal when opportunities arise</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">⚠️ Risk Management</div>
+        
+        <div style="background: #151515; padding: 15px; border-radius: 12px; border-left: 3px solid #ffe66d;">
+            <div style="font-weight: 700; margin-bottom: 5px;">Paper Trading First</div>
+            <div style="font-size: 12px; color: #888;">Test all signals for 30 days before considering real money</div>
+        </div>
+    </div>
+</body>
+</html>

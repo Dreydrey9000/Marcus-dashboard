@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G3AC | Company Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, sans-serif; background: #0a0a0a; color: #fff; padding: 20px; }
+        .header { margin-bottom: 20px; }
+        .back-btn { background: #1a1a1a; padding: 10px 20px; border-radius: 20px; display: inline-block; margin-bottom: 15px; cursor: pointer; }
+        h1 { font-size: 28px; margin-bottom: 10px; }
+        .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+        .stat-box { background: #151515; padding: 16px; border-radius: 12px; }
+        .stat-label { font-size: 11px; color: #888; margin-bottom: 5px; }
+        .stat-value { font-size: 24px; font-weight: 800; }
+        .section { margin-bottom: 25px; }
+        .section-title { font-size: 16px; color: #00d4ff; margin-bottom: 12px; }
+        .task-item { background: #151515; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 3px solid #00d4ff; }
+        .task-title { font-weight: 700; margin-bottom: 5px; }
+        .task-desc { font-size: 12px; color: #888; }
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 10px; margin-top: 5px; }
+        .badge-high { background: #ff6b6b22; color: #ff6b6b; }
+        .badge-medium { background: #ffe66d22; color: #ffe66d; }
+        .badge-done { background: #00ff8822; color: #00ff88; }
+    </style>
+</head>
+<body>
+    <div class="back-btn" onclick="window.location.href='companies.html'">← Back to Companies</div>
+    
+    <div class="header">
+        <h1>🏢 G3AC</h1>
+        <p style="color: #888;">Business operations & consulting</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-box">
+            <div class="stat-label">Monthly Budget</div>
+            <div class="stat-value">$300</div>
+            <div style="font-size: 11px; color: #888; margin-top: 5px;">$120 spent (40%)</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Active Tasks</div>
+            <div class="stat-value">1</div>
+            <div style="font-size: 11px; color: #ff6b6b;">Critical priority</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Current Projects</div>
+            <div class="stat-value">2</div>
+            <div style="font-size: 11px; color: #888;">Active engagements</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Agents Assigned</div>
+            <div class="stat-value">1</div>
+            <div style="font-size: 11px; color: #888;">Operations agent</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🎯 Active Tasks</div>
+        
+        <div class="task-item" style="border-left-color: #ff6b6b;">
+            <div class="task-title">Complete milestone deliverable</div>
+            <div class="task-desc">Finish Q1 strategic plan for client - due Thursday</div>
+            <span class="badge badge-high">CRITICAL</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📊 Active Projects</div>
+        
+        <div class="task-item">
+            <div class="task-title">Client A - Strategic Planning</div>
+            <div class="task-desc">Q1 2026 growth strategy + market analysis</div>
+            <span class="badge badge-medium">IN PROGRESS</span>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Client B - Operations Consulting</div>
+            <div class="task-desc">Process optimization and efficiency audit</div>
+            <span class="badge badge-done">ON TRACK</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">💰 Revenue</div>
+        
+        <div class="task-item" style="border-left-color: #00ff88;">
+            <div class="task-title">Monthly Retainer Revenue</div>
+            <div class="task-desc">$5,000/mo from active clients</div>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Q1 Project Revenue</div>
+            <div class="task-desc">$15,000 total | $8,000 collected | $7,000 pending</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🤖 Operations Agent</div>
+        
+        <div class="task-item">
+            <div class="task-title">G3AC Operations Agent</div>
+            <div class="task-desc">Manages client communications, deliverables, invoicing, follow-ups</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📁 Recent Activity</div>
+        
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <div style="font-size: 10px; color: #666;">Today, 2:15 PM</div>
+            <div style="font-size: 13px;">Sent invoice to Client B: $2,500</div>
+        </div>
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <div style="font-size: 10px; color: #666;">Yesterday, 4:30 PM</div>
+            <div style="font-size: 13px;">Delivered strategic plan draft to Client A</div>
+        </div>
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px;">
+            <div style="font-size: 10px; color: #666;">March 9, 11:00 AM</div>
+            <div style="font-size: 13px;">Received payment: $3,000 from Client A</div>
+        </div>
+    </div>
+</body>
+</html>

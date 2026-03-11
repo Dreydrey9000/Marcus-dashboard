@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frictionless | Company Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, sans-serif; background: #0a0a0a; color: #fff; padding: 20px; }
+        .header { margin-bottom: 20px; }
+        .back-btn { background: #1a1a1a; padding: 10px 20px; border-radius: 20px; display: inline-block; margin-bottom: 15px; cursor: pointer; }
+        h1 { font-size: 28px; margin-bottom: 10px; }
+        .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+        .stat-box { background: #151515; padding: 16px; border-radius: 12px; }
+        .stat-label { font-size: 11px; color: #888; margin-bottom: 5px; }
+        .stat-value { font-size: 24px; font-weight: 800; }
+        .section { margin-bottom: 25px; }
+        .section-title { font-size: 16px; color: #00d4ff; margin-bottom: 12px; }
+        .task-item { background: #151515; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 3px solid #00d4ff; }
+        .task-title { font-weight: 700; margin-bottom: 5px; }
+        .task-desc { font-size: 12px; color: #888; }
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 10px; margin-top: 5px; }
+        .badge-medium { background: #ffe66d22; color: #ffe66d; }
+    </style>
+</head>
+<body>
+    <div class="back-btn" onclick="window.location.href='companies.html'">← Back to Companies</div>
+    
+    <div class="header">
+        <h1>👥 Frictionless</h1>
+        <p style="color: #888;">Startup & product development</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-box">
+            <div class="stat-label">Monthly Budget</div>
+            <div class="stat-value">$150</div>
+            <div style="font-size: 11px; color: #888; margin-top: 5px;">$0 spent (0%)</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Status</div>
+            <div class="stat-value" style="font-size: 18px;">🏗️ Setup</div>
+            <div style="font-size: 11px; color: #ffe66d;">Defining MVP</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Stage</div>
+            <div class="stat-value" style="font-size: 18px;">Idea</div>
+            <div style="font-size: 11px; color: #888;">Pre-product</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Target Launch</div>
+            <div class="stat-value" style="font-size: 16px;">Q2 2026</div>
+            <div style="font-size: 11px; color: #888;">~60 days</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🎯 Setup Phase Tasks</div>
+        
+        <div class="task-item" style="border-left-color: #ffe66d;">
+            <div class="task-title">Define MVP features</div>
+            <div class="task-desc">List core features for v1.0 launch</div>
+            <span class="badge badge-medium">IN PROGRESS</span>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Market research</div>
+            <div class="task-desc">Analyze competitors, identify gaps, validate demand</div>
+            <span class="badge badge-medium">PLANNED</span>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Tech stack selection</div>
+            <div class="task-desc">Choose frameworks, hosting, tools for rapid development</div>
+            <span class="badge badge-medium">PLANNED</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">💡 Product Concept</div>
+        
+        <div style="background: #151515; padding: 15px; border-radius: 12px; border-left: 3px solid #00d4ff;">
+            <div style="font-weight: 700; margin-bottom: 5px;">Problem</div>
+            <div style="font-size: 12px; color: #888; margin-bottom: 10px;">[Define the problem you're solving]</div>
+            
+            <div style="font-weight: 700; margin-bottom: 5px;">Solution</div>
+            <div style="font-size: 12px; color: #888; margin-bottom: 10px;">[Your product/service solution]</div>
+            
+            <div style="font-weight: 700; margin-bottom: 5px;">Target Market</div>
+            <div style="font-size: 12px; color: #888;">[Who are your ideal customers]</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🚀 Launch Roadmap</div>
+        
+        <div class="task-item">
+            <div class="task-title">Phase 1: MVP (Weeks 1-4)</div>
+            <div class="task-desc">Core features only, manual processes acceptable</div>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Phase 2: Beta Testing (Weeks 5-6)</div>
+            <div class="task-desc">10 beta users, gather feedback, fix critical bugs</div>
+        </div>
+
+        <div class="task-item">
+            <div class="task-title">Phase 3: Public Launch (Week 7+)</div>
+            <div class="task-desc">Marketing push, onboard first 100 users</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">💰 Business Model</div>
+        
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <div style="font-weight: 600; margin-bottom: 3px;">Revenue Model</div>
+            <div style="font-size: 11px; color: #888;">[How will you make money? SaaS subscription, one-time, freemium?]</div>
+        </div>
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+            <div style="font-weight: 600; margin-bottom: 3px;">Target Pricing</div>
+            <div style="font-size: 11px; color: #888;">[What will you charge? Monthly/annual?]</div>
+        </div>
+        <div style="background: #0f0f0f; padding: 12px; border-radius: 8px;">
+            <div style="font-weight: 600; margin-bottom: 3px;">First-Year Goal</div>
+            <div style="font-size: 11px; color: #888;">[Revenue target: $X MRR, Y customers]</div>
+        </div>
+    </div>
+</body>
+</html>
