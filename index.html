@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEX | Full Visibility Dashboard v5</title>
+    <title>APEX Dashboard v6 | Complete Visibility</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; padding-bottom: 100px; }
@@ -16,140 +16,353 @@
         .nav-item.active { background: linear-gradient(135deg, #00d4ff, #7b2cbf); color: #fff; }
         
         .section { display: none; padding: 15px; }
-        .section.active { display: block; animation: fadeIn 0.3s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .section.active { display: block; }
         
         .card { background: #151515; border-radius: 16px; padding: 20px; margin-bottom: 15px; }
         .card-title { font-size: 11px; color: #888; text-transform: uppercase; margin-bottom: 15px; }
         
-        .activity-item { background: #0f0f0f; border-radius: 12px; padding: 15px; margin-bottom: 10px; border-left: 3px solid #00d4ff; }
-        .activity-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .activity-title { font-weight: 700; font-size: 14px; }
-        .live-badge { background: #00ff8822; color: #00ff88; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
-        .pending-badge { background: #ffe66d22; color: #ffe66d; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
-        .waiting-badge { background: #ff6b6b22; color: #ff6b6b; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
-        .metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .metric-box { background: #0f0f0f; border-radius: 12px; padding: 16px; text-align: center; }
-        .metric-value { font-size: 24px; font-weight: 800; margin: 8px 0; }
-        .positive { color: #00ff88; } .negative { color: #ff4444; }
+        .task-item { background: #0f0f0f; border-radius: 12px; padding: 15px; margin-bottom: 10px; border-left: 3px solid #00d4ff; }
+        .task-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .task-title { font-weight: 700; font-size: 14px; }
+        .task-badge { padding: 2px 8px; border-radius: 4px; font-size: 10px; text-transform: uppercase; }
+        .badge-high { background: #ff6b6b22; color: #ff6b6b; }
+        .badge-medium { background: #ffe66d22; color: #ffe66d; }
+        .badge-low { background: #00d4ff22; color: #00d4ff; }
         
-        .company-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .company-card { background: #0f0f0f; border-radius: 12px; padding: 16px; }
+        .library-item { background: #0f0f0f; border-radius: 12px; padding: 12px; margin-bottom: 8px; }
+        .library-name { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+        .library-desc { font-size: 11px; color: #888; }
+        
+        .reminder-item { background: #0f0f0f; border-radius: 12px; padding: 12px; margin-bottom: 8px; border-left: 3px solid #ffe66d; }
+        .reminder-time { font-size: 10px; color: #666; margin-bottom: 4px; }
+        
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #0a0a0a; border-top: 1px solid #222; display: flex; justify-content: space-around; padding: 10px 0 20px; }
-        .bottom-item { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 8px 16px; color: #666; cursor: pointer; font-size: 10px; }
+        .bottom-item { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 8px 12px; color: #666; cursor: pointer; font-size: 10px; }
         .bottom-item.active { color: #00d4ff; }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>◉ APEX Dashboard v5</h1>
+        <h1>◉ APEX v6</h1>
         <div class="status-bar">
             <span>🔴 LIVE</span>
             <span>🏢 7 Companies</span>
-            <span>🛠️ 188 Tools</span>
+            <span>🛠️ 188+ Tools</span>
             <span>💰 $3.20 Today</span>
+            <span>9:38 AM EST</span>
         </div>
     </div>
     
     <div class="nav">
-        <div class="nav-item active" onclick="showTab('live')">🔴 Live Activity</div>
+        <div class="nav-item active" onclick="showTab('overview')">📊 Overview</div>
+        <div class="nav-item" onclick="showTab('your-tasks')">📋 Your Tasks</div>
+        <div class="nav-item" onclick="showTab('my-tasks')">🤖 My Tasks</div>
+        <div class="nav-item" onclick="showTab('reminders')">⏰ Reminders</div>
+        <div class="nav-item" onclick="showTab('library')">📚 Library</div>
         <div class="nav-item" onclick="showTab('companies')">🏢 Companies</div>
-        <div class="nav-item" onclick="showTab('repos')">📦 Repos</div>
-        <div class="nav-item" onclick="showTab('tasks')">📋 Tasks</div>
     </div>
 
-    <div id="live" class="section active">
+    <!-- OVERVIEW -->
+    <div id="overview" class="section active">
         <div class="card">
-            <div class="card-title">🔴 What I'm Doing RIGHT NOW</div>
+            <div class="card-title">🔴 Current Focus</div>
+            <div class="task-item" style="border-left-color: #00ff88;">
+                <div class="task-header">
+                    <span class="task-title">🧠 Setting up Super Memory</span>
+                    <span class="task-badge badge-high">ACTIVE</span>
+                </div>
+                <div style="font-size: 12px; color: #888;">Installing plugin, configuring API key</div>
+            </div>
+            <div class="task-item">
+                <div class="task-header">
+                    <span class="task-title">🛠️ Cloning ClawRouter</span>
+                    <span class="task-badge badge-medium">QUEUED</span>
+                </div>
+                <div style="font-size: 12px; color: #888;">Smart LLM router for cost optimization</div>
+            </div>
+            <div class="task-item">
+                <div class="task-header">
+                    <span class="task-title">🔍 Research Protocol</span>
+                    <span class="task-badge badge-low">COMPLETE</span>
+                </div>
+                <div style="font-size: 12px; color: #888;">Auto-research agent when you say "research X"</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">📊 Quick Stats</div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                <div style="background: #0f0f0f; border-radius: 12px; padding: 16px; text-align: center;">
+                    <div style="font-size: 10px; color: #888;">Your Pending</div>
+                    <div style="font-size: 24px; font-weight: 800; margin: 8px 0;">3</div>
+                    <div style="font-size: 12px; color: #00d4ff;">High priority</div>
+                </div>
+                <div style="background: #0f0f0f; border-radius: 12px; padding: 16px; text-align: center;">
+                    <div style="font-size: 10px; color: #888;">My Queue</div>
+                    <div style="font-size: 24px; font-weight: 800; margin: 8px 0;">5</div>
+                    <div style="font-size: 12px; color: #ffe66d;">In progress</div>
+                </div>
+                <div style="background: #0f0f0f; border-radius: 12px; padding: 16px; text-align: center;">
+                    <div style="font-size: 10px; color: #888;">Total Repos</div>
+                    <div style="font-size: 24px; font-weight: 800; margin: 8px 0;">188+</div>
+                    <div style="font-size: 12px; color: #00ff88;">+24 today</div>
+                </div>
+                <div style="background: #0f0f0f; border-radius: 12px; padding: 16px; text-align: center;">
+                    <div style="font-size: 10px; color: #888;">Active Skills</div>
+                    <div style="font-size: 24px; font-weight: 800; margin: 8px 0;">4</div>
+                    <div style="font-size: 12px; color: #00d4ff;">+ Research</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- YOUR TASKS -->
+    <div id="your-tasks" class="section">
+        <div class="card">
+            <div class="card-title">📋 Action Items for Drey (3 pending)</div>
             
-            <div class="activity-item" style="border-left-color: #00ff88;">
-                <div class="activity-header">
-                    <span class="activity-title">📦 Cloning Repositories</span>
-                    <span class="live-badge">● LIVE</span>
+            <div class="task-item" style="border-left-color: #ff6b6b;">
+                <div class="task-header">
+                    <span class="task-title">🎬 Record Cold Sales Video</span>
+                    <span class="task-badge badge-high">HIGH</span>
                 </div>
-                <div style="font-size: 12px; color: #888; margin-bottom: 8px;">Just cloned: SeleniumBase, developer-roadmap, system-design-primer + 21 others</div>
-                <div style="font-size: 11px; color: #666;">Total: 188 repos | Started: 11:01 AM | Cost: $0.15</div>
+                <div style="font-size: 12px; color: #888; margin-bottom: 8px;">Template ready at COLD_SALES_VIDEO_TEMPLATE.md</div>
+                <div style="font-size: 11px; color: #666;">Impact: $3,500/week | Time: 10 min | Waiting since: Today</div>
             </div>
 
-            <div class="activity-item">
-                <div class="activity-header">
-                    <span class="activity-title">🎨 Building Dashboard v5</span>
-                    <span class="live-badge">● CODING</span>
+            <div class="task-item" style="border-left-color: #ff6b6b;">
+                <div class="task-header">
+                    <span class="task-title">🔑 Get Groq API Key</span>
+                    <span class="task-badge badge-high">HIGH</span>
                 </div>
-                <div style="font-size: 12px; color: #888; margin-bottom: 8px;">Adding full visibility - every action, cost, repo visible in real-time</div>
-                <div style="font-size: 11px; color: #666;">File: index.html | Lines: 400+ | Cost: $0.02</div>
+                <div style="font-size: 12px; color: #888; margin-bottom: 8px;">Go to console.groq.com → Sign up free → Create key</div>
+                <div style="font-size: 11px; color: #666;">Impact: Activate 18 trading agents | Time: 5 min</div>
             </div>
 
-            <div class="activity-item" style="border-left-color: #ffe66d;">
-                <div class="activity-header">
-                    <span class="activity-title">🤖 AI Hedge Fund Setup</span>
-                    <span class="pending-badge">● WAITING</span>
+            <div class="task-item" style="border-left-color: #ffe66d;">
+                <div class="task-header">
+                    <span class="task-title">👤 Who is Julian Golden?</span>
+                    <span class="task-badge badge-medium">MEDIUM</span>
                 </div>
-                <div style="font-size: 12px; color: #888; margin-bottom: 8px;">18 investor agents configured (Buffett, Munger, Wood, Burry, etc.)</div>
-                <div style="font-size: 11px; color: #666;">Needs: Groq API key | Action: Go to console.groq.com</div>
-            </div>
-
-            <div class="activity-item" style="border-left-color: #ff6b6b;">
-                <div class="activity-header">
-                    <span class="activity-title">🎬 Cold Sales System</span>
-                    <span class="waiting-badge">● NEEDS YOU</span>
-                </div>
-                <div style="font-size: 12px; color: #888; margin-bottom: 8px;">Video template ready, waiting for your 60-second video</div>
-                <div style="font-size: 11px; color: #666;">Impact: $3,500/week | Action: Record video</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-title">📊 Live Metrics</div>
-            <div class="metric-grid">
-                <div class="metric-box"><div style="font-size: 10px; color: #888;">Tasks Today</div><div class="metric-value">47</div><span class="positive">↑ 12</span></div>
-                <div class="metric-box"><div style="font-size: 10px; color: #888;">Cost</div><div class="metric-value">$3.20</div><span style="font-size: 12px; color: #666;">47K tokens</span></div>
-                <div class="metric-box"><div style="font-size: 10px; color: #888;">Repos</div><div class="metric-value">188</div><span style="font-size: 12px; color: #666;">+24 today</span></div>
-                <div class="metric-box"><div style="font-size: 10px; color: #888;">Value</div><div class="metric-value">$15K+</div><span class="positive">4,687x ROI</span></div>
+                <div style="font-size: 12px; color: #888; margin-bottom: 8px;">Send me their social media link to scrape content</div>
+                <div style="font-size: 11px; color: #666;">For: RAG database + building insights</div>
             </div>
         </div>
     </div>
 
+    <!-- MY TASKS -->
+    <div id="my-tasks" class="section">
+        <div class="card">
+            <div class="card-title">🤖 What APEX is Working On (5 active)</div>
+            
+            <div class="task-item" style="border-left-color: #00ff88;">
+                <div class="task-header">
+                    <span class="task-title">🧠 Super Memory Integration</span>
+                    <span class="task-badge badge-high">ACTIVE</span>
+                </div>
+                <div style="font-size: 12px; color: #888; margin-bottom: 8px;">Installing plugin, configuring with your API key</div>
+                <div style="font-size: 11px; color: #666;">Status: Installing | ETA: 2 min</div>
+            </div>
+
+            <div class="task-item">
+                <div class="task-header">
+                    <span class="task-title">🛠️ Clone ClawRouter</span>
+                    <span class="task-badge badge-medium">QUEUED</span>
+                </div>
+                <div style="font-size: 12px; color: #888; margin-bottom: 8px;">Smart LLM router for cost optimization</div>
+                <div style="font-size: 11px; color: #666;">Next in queue</div>
+            </div>
+
+            <div class="task-item">
+                <div class="task-header">
+                    <span class="task-title">📊 Update Dashboard v6</span>
+                    <span class="task-badge badge-high">ACTIVE</span>
+                </div>
+                <div style="font-size: 12px; color: #888; margin-bottom: 8px;">Adding: Your Tasks, My Tasks, Reminders, Library</div>
+                <div style="font-size: 11px; color: #666;">Status: Building | ETA: 5 min</div>
+            </div>
+
+            <div class="task-item">
+                <div class="task-header">
+                    <span class="task-title">🏗️ Paperclip+DeerFlow Integration</span>
+                    <span class="task-badge badge-low">APPROVED</span>
+                </div>
+                <div style="font-size: 12px; color: #888; margin-bottom: 8px;">Enterprise orchestration for 7 companies</div>
+                <div style="font-size: 11px; color: #666;">Ready to start | Timeline: 2 weeks</div>
+            </div>
+
+            <div class="task-item">
+                <div class="task-header">
+                    <span class="task-title">🔍 Research Protocol</span>
+                    <span class="task-badge badge-low">✅ DONE</span>
+                </div>
+                <div style="font-size: 12px; color: #888; margin-bottom: 8px;">Auto-research agent setup complete</div>
+                <div style="font-size: 11px; color: #666;">File: RESEARCH_PROTOCOL.md</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REMINDERS -->
+    <div id="reminders" class="section">
+        <div class="card">
+            <div class="card-title">⏰ Upcoming Reminders & Checks</div>
+            
+            <div class="reminder-item">
+                <div class="reminder-time">Every Thursday 9 AM EST</div>
+                <div style="font-weight: 600; font-size: 13px;">🔒 Weekly Security Audit</div>
+                <div style="font-size: 11px; color: #888;">Next: Thursday, March 13</div>
+            </div>
+
+            <div class="reminder-item">
+                <div class="reminder-time">Every Thursday 9 AM EST</div>
+                <div style="font-weight: 600; font-size: 13px;">📦 Update Check</div>
+                <div style="font-size: 11px; color: #888;">Next: Thursday, March 13</div>
+            </div>
+
+            <div class="reminder-item">
+                <div class="reminder-time">Daily</div>
+                <div style="font-weight: 600; font-size: 13px;">💰 Check Revenue Opportunities</div>
+                <div style="font-size: 11px; color: #888;">Cold sales, hedge fund signals, business tasks</div>
+            </div>
+
+            <div class="reminder-item">
+                <div class="reminder-time">When you wake up</div>
+                <div style="font-weight: 600; font-size: 13px;">📅 Morning Briefing</div>
+                <div style="font-size: 11px; color: #888;">Priorities, calendar, weather, accountability</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">📝 Add Reminder</div>
+            <div style="font-size: 12px; color: #888;">Text me: "Remind me to [task] at [time]"</div>
+        </div>
+    </div>
+
+    <!-- LIBRARY -->
+    <div id="library" class="section">
+        <div class="card">
+            <div class="card-title">🎯 Active Skills (4)</div>
+            
+            <div class="library-item">
+                <div class="library-name">healthcheck</div>
+                <div class="library-desc">Host security hardening, risk assessment, version checks</div>
+            </div>
+            <div class="library-item">
+                <div class="library-name">skill-creator</div>
+                <div class="library-desc">Create, edit, improve, or audit AgentSkills</div>
+            </div>
+            <div class="library-item">
+                <div class="library-name">tmux</div>
+                <div class="library-desc">Remote-control tmux sessions for interactive CLIs</div>
+            </div>
+            <div class="library-item">
+                <div class="library-name">weather</div>
+                <div class="library-desc">Current weather and forecasts via wttr.in or Open-Meteo</div>
+            </div>
+            <div class="library-item">
+                <div class="library-name">🔍 research (NEW)</div>
+                <div class="library-desc">Auto-research agent for web search + synthesis</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">📦 Key Repositories (10 of 188+)</div>
+            
+            <div class="library-item">
+                <div class="library-name">AI Hedge Fund</div>
+                <div class="library-desc">18 legendary investor agents for trading signals</div>
+            </div>
+            <div class="library-item">
+                <div class="library-name">ClawRouter (pending)</div>
+                <div class="library-desc">Smart LLM router with 15-dimension scoring</div>
+            </div>
+            <div class="library-item">
+                <div class="library-name">DeerFlow</div>
+                <div class="library-desc">Agent orchestration framework</div>
+            </div>
+            <div class="library-item">
+                <div class="library-name">Paperclip</div>
+                <div class="library-desc">Multi-agent coordination system</div>
+            </div>
+            <div class="library-item">
+                <div class="library-name">SeleniumBase</div>
+                <div class="library-desc">Web automation and testing framework</div>
+            </div>
+            <div class="library-item">
+                <div class="library-name">PinchTab</div>
+                <div class="library-desc">Browser control and automation</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🤖 Available Agents</div>
+            
+            <div class="library-item">
+                <div class="library-name">Research Agent (sub-agent)</div>
+                <div class="library-desc">Deep research with web search + synthesis</div>
+            </div>
+            <div class="library-item">
+                <div class="library-name">18 Investor Agents</div>
+                <div class="library-desc">Buffett, Munger, Wood, Burry, etc. (needs Groq key)</div>
+            </div>
+            <div class="library-item">
+                <div class="library-name">Blind Spot Agent</div>
+                <div class="library-desc">Scans every 4 hours for missed opportunities</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPANIES -->
     <div id="companies" class="section">
         <div class="card">
             <div class="card-title">🏢 7 Companies</div>
-            <div class="company-grid">
-                <div class="company-card"><div style="font-size: 24px;">🎬</div><div style="font-weight: 700; margin-top: 8px;">Viral Edits</div><div style="font-size: 11px; color: #666;">3 tasks | $200/mo</div></div>
-                <div class="company-card"><div style="font-size: 24px;">🏢</div><div style="font-weight: 700; margin-top: 8px;">G3AC</div><div style="font-size: 11px; color: #666;">1 critical | $300/mo</div></div>
-                <div class="company-card"><div style="font-size: 24px;">👥</div><div style="font-weight: 700; margin-top: 8px;">Frictionless</div><div style="font-size: 11px; color: #666;">Setting up | $150/mo</div></div>
-                <div class="company-card"><div style="font-size: 24px;">📱</div><div style="font-weight: 700; margin-top: 8px;">Personal</div><div style="font-size: 11px; color: #666;">2 scheduled | $100/mo</div></div>
-                <div class="company-card"><div style="font-size: 24px;">💘</div><div style="font-weight: 700; margin-top: 8px;">Dating</div><div style="font-size: 11px; color: #666;">1 pending | $50/mo</div></div>
-                <div class="company-card"><div style="font-size: 24px;">📈</div><div style="font-weight: 700; margin-top: 8px;">AI Hedge Fund</div><div style="font-size: 11px; color: #666;">⏳ Needs API | $100/mo</div></div>
-            </div>
-        </div>
-    </div>
-
-    <div id="repos" class="section">
-        <div class="card">
-            <div class="card-title">📦 188 Repositories</div>
-            <div style="font-size: 12px; color: #888;">Key: AI Hedge Fund, DeerFlow, PinchTab, SeleniumBase, anything-llm, LocalAI + 182 more</div>
-        </div>
-    </div>
-
-    <div id="tasks" class="section">
-        <div class="card">
-            <div class="card-title">📋 Action Items</div>
-            <div style="background: #0f0f0f; border-radius: 12px; padding: 15px; margin-bottom: 10px; border-left: 3px solid #ff6b6b;">
-                <div style="font-weight: 700;">🎬 Record Cold Sales Video</div>
-                <div style="font-size: 12px; color: #888;">Template ready, need your 60-sec recording | Impact: $3,500/week</div>
-            </div>
-            <div style="background: #0f0f0f; border-radius: 12px; padding: 15px; border-left: 3px solid #ffe66d;">
-                <div style="font-weight: 700;">🔑 Get Groq API Key</div>
-                <div style="font-size: 12px; color: #888;">console.groq.com → Free signup | Activate 18 trading agents</div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                <div style="background: #0f0f0f; border-radius: 12px; padding: 16px;">
+                    <div style="font-size: 24px;">🎬</div>
+                    <div style="font-weight: 700; margin-top: 8px;">Viral Edits</div>
+                    <div style="font-size: 11px; color: #666;">3 tasks | $200/mo</div>
+                </div>
+                <div style="background: #0f0f0f; border-radius: 12px; padding: 16px;">
+                    <div style="font-size: 24px;">🏢</div>
+                    <div style="font-weight: 700; margin-top: 8px;">G3AC</div>
+                    <div style="font-size: 11px; color: #666;">1 critical | $300/mo</div>
+                </div>
+                <div style="background: #0f0f0f; border-radius: 12px; padding: 16px;">
+                    <div style="font-size: 24px;">👥</div>
+                    <div style="font-weight: 700; margin-top: 8px;">Frictionless</div>
+                    <div style="font-size: 11px; color: #666;">Setting up | $150/mo</div>
+                </div>
+                <div style="background: #0f0f0f; border-radius: 12px; padding: 16px;">
+                    <div style="font-size: 24px;">📱</div>
+                    <div style="font-weight: 700; margin-top: 8px;">Personal</div>
+                    <div style="font-size: 11px; color: #666;">2 scheduled | $100/mo</div>
+                </div>
+                <div style="background: #0f0f0f; border-radius: 12px; padding: 16px;">
+                    <div style="font-size: 24px;">💘</div>
+                    <div style="font-weight: 700; margin-top: 8px;">Dating</div>
+                    <div style="font-size: 11px; color: #666;">1 pending | $50/mo</div>
+                </div>
+                <div style="background: #0f0f0f; border-radius: 12px; padding: 16px;">
+                    <div style="font-size: 24px;">📈</div>
+                    <div style="font-weight: 700; margin-top: 8px;">AI Hedge Fund</div>
+                    <div style="font-size: 11px; color: #666;">⏳ Needs API | $100/mo</div>
+                </div>
+                <div style="background: #0f0f0f; border-radius: 12px; padding: 16px;">
+                    <div style="font-size: 24px;">💼</div>
+                    <div style="font-weight: 700; margin-top: 8px;">Business Holdings</div>
+                    <div style="font-size: 11px; color: #666;">Umbrella | $200/mo</div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="bottom-nav">
-        <div class="bottom-item active" onclick="showTab('live')">🔴 Live</div>
-        <div class="bottom-item" onclick="showTab('companies')">🏢 Cos</div>
-        <div class="bottom-item" onclick="showTab('repos')">📦 Repos</div>
-        <div class="bottom-item" onclick="showTab('tasks')">📋 Tasks</div>
+        <div class="bottom-item active" onclick="showTab('overview')">📊</div>
+        <div class="bottom-item" onclick="showTab('your-tasks')">📋</div>
+        <div class="bottom-item" onclick="showTab('my-tasks')">🤖</div>
+        <div class="bottom-item" onclick="showTab('reminders')">⏰</div>
+        <div class="bottom-item" onclick="showTab('library')">📚</div>
+        <div class="bottom-item" onclick="showTab('companies')">🏢</div>
     </div>
 
     <script>
